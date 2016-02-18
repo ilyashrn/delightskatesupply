@@ -11,7 +11,8 @@ class Administrator extends CI_Model {
 
 	function getAll() {
 		$this->db->select('*');
-		$this->db->from($this->table);
+		$this->db->from($this->table.' as u');
+		$this->db->join('user_previleges as p', 'u.id_prev = p.id_prev', 'left');
 
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
@@ -46,6 +47,10 @@ class Administrator extends CI_Model {
 		} else {
 			return false;
 		}
+	}
+
+	function insert($data) {
+		$this->db->insert($this->table, $data);
 	}
 }
 

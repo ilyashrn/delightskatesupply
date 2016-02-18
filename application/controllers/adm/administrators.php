@@ -1,0 +1,83 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Administrators extends CI_Controller {
+
+	public $username;
+	public $displayname;
+	public $avatar;
+	public function __construct() {
+		parent::__construct();
+		date_default_timezone_set('Asia/Jakarta');
+		if (!$this->session->userdata('logged')) {
+			redirect('adm/login','refresh');
+		} else {
+			$this->username = $this->session->userdata('user');
+			$this->displayname = $this->session->userdata('displayname');
+			$this->avatar = $this->session->userdata('avatar');
+		}	
+	}
+
+	public function index()
+	{
+		$data = array(
+			'title' => 'Administrator Manager',
+			'username' => $this->username,
+			'displayname' => $this->displayname,
+			'avatar' => $this->avatar,
+			'adminlist' => $this->administrator->getAll()
+		);
+		$this->load->view('adm/html_head', $data);
+		$this->load->view('adm/navbar-top', $data);
+		$this->load->view('adm/sidebar', $data);
+		$this->load->view('adm/content/admin-list', $data);
+		$this->load->view('adm/footer', $data);		
+	}
+
+	public function is_username_exist($username) {
+		if ($this->administrator->checkEntry('user_username',$username)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public function i_ing() {
+		$this->form_validation->set_rules('user_username','Username','callback_is_username_exist');
+		if ($this->form_validation->run()) {
+			if ($_FILES['user_avatar']['size'] !== 0) {
+				$config['upload_path'] = './assets/profil_photo/';
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['encrypt_name'] = TRUE;
+				$config['overwrite'] = FALSE;
+
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+				$upload = $this->upload->do_upload('user_avatar');	
+				$upload_data = $this->upload->data(); //UPLOAD DATA AFTER UPLOADING
+				$file_name = $upload_data['file_name']; //RETRIEVING FILE NAME
+			}
+
+			$data = array(
+				'user_displayname' => $this->input->post('user_displayname'),
+				'user_username' => $this->input->post('user_username'), 
+				'user_password' => md5($this->input->post('user_password')),
+				'id_prev' => $this->input->post('id_prev'), 
+				'user_avatar' => $file_name
+			);
+
+			$this->administrator->insert($data);
+			$this->session->set_flashdata('msg', 'Welldone, new user is inserted.');	
+		} else {
+			$this->session->set_flashdata('min', true);
+			$this->session->set_flashdata('username', $this->input->post('user_username'));
+			$this->session->set_flashdata('displayname', $this->input->post('user_displayname'));
+			$this->session->set_flashdata('warn', 'Username is exist. Please choose another name.');
+		}
+		
+		redirect('adm/administrators','refresh');
+	}
+}
+
+/* End of file administrators.php */
+/* Location: ./application/controllers/adm/administrators.php */
