@@ -22,6 +22,20 @@ class Administrator extends CI_Model {
 		}
 	}
 
+	function get($id) {
+		$this->db->select('*');
+		$this->db->from($this->table.' as u');
+		$this->db->join('user_previleges as p', 'u.id_prev = p.id_prev', 'left');
+		$this->db->where('id_user', $id);
+
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		} else {
+			return false;
+		}
+	}
+
 	function checkEntry($comparison,$value) {
 		$this->db->select('*');
 		$this->db->from($this->table);
@@ -51,6 +65,11 @@ class Administrator extends CI_Model {
 
 	function insert($data) {
 		$this->db->insert($this->table, $data);
+	}
+
+	function delete($where) {
+		$this->db->where('id_user', $where);
+		$this->db->delete($this->table);
 	}
 }
 

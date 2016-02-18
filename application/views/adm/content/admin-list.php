@@ -123,12 +123,12 @@
               <tr>
                 <td style="width: 20%"><img src="<?php echo ($admin->user_avatar!=='') ? base_url().'assets/profil_photo/'.$admin->user_avatar : base_url().'assets/profil_photo/nobody.jpg'?>" style="width: 30%;"></td>
                 <td><?php echo $admin->id_user ?></td>
-                <td><?php echo $admin->user_displayname ?></td>
+                <td><a href="administrators/update/<?php echo $admin->id_user.'/'.$admin->user_username ?>"><?php echo $admin->user_displayname ?></a></td>
                 <td><?php echo $admin->user_username ?></td>
                 <td><div class="alert green lighten-4 green-text text-darken-2 center-align btn-rounded"><b><?php echo $admin->prev_name ?></b></div></td>
                 <td><?php echo ($admin->user_last_login=='0000-00-00 00:00:00') ? 'Never login yet' : $admin->user_last_login ?></td>
                 <td>
-                    <a class="waves-effect waves-dark btn red lighten-1 btn-small btn-rounded"><i class="small fa fa-remove"></i></a>
+                    <a href="administrators/delete/<?php echo $admin->id_user.'/'.$admin->user_username ?>" class="waves-effect waves-dark btn red lighten-1 btn-small btn-rounded"><i class="small fa fa-remove"></i></a>
                 </td>
               </tr> 
               <?php }

@@ -77,6 +77,27 @@ class Administrators extends CI_Controller {
 		
 		redirect('adm/administrators','refresh');
 	}
+
+	public function update($id,$username) {	
+		$data = array(
+			'title' => 'Administrator Manager',
+			'username' => $this->username,
+			'displayname' => $this->displayname,
+			'avatar' => $this->avatar,
+			'admindetail' => $this->administrator->get($id)
+		);
+		$this->load->view('adm/html_head', $data);
+		$this->load->view('adm/navbar-top', $data);
+		$this->load->view('adm/sidebar', $data);
+		$this->load->view('adm/content/admin-edit', $data);
+		$this->load->view('adm/footer', $data);		
+	}
+
+	public function delete($id,$username) {
+		$this->administrator->delete($id);
+		$this->session->set_flashdata('msg', $username.' has been removed. Well done.');
+		redirect('adm/administrators','refresh');
+	}
 }
 
 /* End of file administrators.php */
