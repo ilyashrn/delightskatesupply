@@ -78,24 +78,58 @@ class Administrators extends CI_Controller {
 		redirect('adm/administrators','refresh');
 	}
 
-	public function update($id,$username) {	
-		$data = array(
-			'title' => 'Administrator Manager',
-			'username' => $this->username,
-			'displayname' => $this->displayname,
-			'avatar' => $this->avatar,
-			'admindetail' => $this->administrator->get($id)
+	public function u_ing($id,$username) {
+		if ($_FILES['user_avatar']['size'] !== 0) {
+			$config['upload_path'] = './assets/profil_photo/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['encrypt_name'] = TRUE;
+			$config['overwrite'] = FALSE;
+
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+			$upload = $this->upload->do_upload('user_avatar');	
+			$upload_data = $this->upload->data(); //UPLOAD DATA AFTER UPLOADING
+			$file_name = $upload_data['file_name']; //RETRIEVING FILE NAME
+		} else {
+			$file_name = $this->input->post('current_avatar');
+		}
+		$update = array(
+			'user_displayname' => $this->input->post('user_displayname'), 
+			'user_username' => $this->input->post('user_username'), 
+			'user_avatar' => $file_name
 		);
-		$this->load->view('adm/html_head', $data);
-		$this->load->view('adm/navbar-top', $data);
-		$this->load->view('adm/sidebar', $data);
-		$this->load->view('adm/content/admin-edit', $data);
-		$this->load->view('adm/footer', $data);		
+		$this->administrator->update($id,$update);
+		$this->session->set_flashdata('msg', $username."'s profile has been updated.");
+		redirect('adm/administrators','refresh');
+	}
+
+	public function u_pass() {
+		$password = array('user_password' => md5($this->input->post('user_password')));
+		$id = $this->input->post('id_user');
+		$this->administrator->update($id,$password);
+		$this->session->set_flashdata('msg', 'Password successfully changed.');
+		redirect('adm/administrators','refresh');
+	}
+
+	public function u_prev() {
+		$prev = array('id_prev' => $this->input->post('id_prev2'));
+		$id = $this->input->post('id_user');
+		$this->administrator->update($id,$prev);
+		$this->session->set_flashdata('msg', 'Previlege has been successfully changed.');
+		redirect('adm/administrators','refresh');
 	}
 
 	public function delete($id,$username) {
 		$this->administrator->delete($id);
 		$this->session->set_flashdata('msg', $username.' has been removed. Well done.');
+		redirect('adm/administrators','refresh');
+	}
+
+	public function del_photo($file,$id,$username) {
+		$array = array('user_avatar' => '');
+		unlink("./assets/profil_photo/".$file);
+		$this->administrator->update($id,$array);
+		$this->session->set_flashdata('msg', $username."'s avatar photo has been removed.");
 		redirect('adm/administrators','refresh');
 	}
 }

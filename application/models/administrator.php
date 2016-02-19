@@ -71,6 +71,11 @@ class Administrator extends CI_Model {
 		$this->db->where('id_user', $where);
 		$this->db->delete($this->table);
 	}
+
+	function update($where,$data) {
+		$this->db->where('id_user', $where);
+		$this->db->update($this->table, $data);
+	}
 }
 
 /* End of file administrator.php */

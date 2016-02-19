@@ -31,5 +31,6 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/google-code-prettify/prettify.css" />
   <!-- Main -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/_con/css/_con.min.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/_con/css/style.css" />
 </head>
 <body>

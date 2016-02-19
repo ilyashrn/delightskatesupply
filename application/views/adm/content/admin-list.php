@@ -84,8 +84,8 @@
                 </select>
                 <div class="file-field input-field">
                   <input class="file-path validate" type="text"/>
-                  <div class="btn">
-                    <span>Ava</span>
+                  <div class="btn btn-small">
+                    <span>Avatar</span>
                     <input name="user_avatar" type="file" />
                   </div>
                 </div>
@@ -94,10 +94,71 @@
                     <button class="btn">Regrister new user</button>
                   </div>
                 </div>
-               
-              <form>
+              </form>
             </div>
           </div>
+
+          <div class="card <?php echo ($this->session->flashdata('min')) ? '' : 'minimized';?>">
+            <div class="title">
+              <h5>Change Passwords</h5>
+              <a class="minimize" href="#">
+                <i class="mdi-navigation-expand-less"></i>
+              </a>
+            </div>
+            <div class="content">
+              <form enctype="multipart/form-data" data-parsley-validate method="post" action="administrators/u_pass/">
+                <select name="id_user" required>
+                    <option value="" disabled selected>Choose a user</option>
+                  <?php foreach ($adminlist as $admin) { ?>
+                    <option value="<?php echo $admin->id_user;?>"><?php echo $admin->user_username.' - '.$admin->user_displayname ?></option>  
+                  <?php } ?>
+                </select>
+                <div class="input-field">
+                  <input name="user_password" id="user_password1" type="password" required>
+                  <label for="user_password">New Password</label>
+                </div>
+                <div class="input-field">
+                  <input name="conf_pass" id="conf_pass" data-parsley-equalto="#user_password1" type="password" required>
+                  <label for="conf_pass">Confirm New Password</label>
+                </div>
+                <div class="row">
+                  <div class="col s12">
+                    <button class="btn">Regrister new password for user</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="card <?php echo ($this->session->flashdata('min')) ? '' : 'minimized';?>">
+            <div class="title">
+              <h5>Change Previleges</h5>
+              <a class="minimize" href="#">
+                <i class="mdi-navigation-expand-less"></i>
+              </a>
+            </div>
+            <div class="content">
+              <form enctype="multipart/form-data" data-parsley-validate method="post" action="administrators/u_prev">
+                <select name="id_user" required>
+                    <option value="" disabled selected>Choose a user</option>
+                  <?php foreach ($adminlist as $admin) { ?>
+                    <option value="<?php echo $admin->id_user;?>"><?php echo $admin->user_username.' - '.$admin->user_displayname ?></option>  
+                  <?php } ?>
+                </select>
+                <select name="id_prev2" required>
+                    <option value="" disabled selected>Choose a previlege</option>
+                    <option value="1">Superuser</option>
+                    <option value="2">User</option>
+                </select>
+                <div class="row">
+                  <div class="col s12">
+                    <button class="btn">Update previlege for this user</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
         </div>
       </div>
     
@@ -123,7 +184,7 @@
               <tr>
                 <td style="width: 20%"><img src="<?php echo ($admin->user_avatar!=='') ? base_url().'assets/profil_photo/'.$admin->user_avatar : base_url().'assets/profil_photo/nobody.jpg'?>" style="width: 30%;"></td>
                 <td><?php echo $admin->id_user ?></td>
-                <td><a href="administrators/update/<?php echo $admin->id_user.'/'.$admin->user_username ?>"><?php echo $admin->user_displayname ?></a></td>
+                <td><a class="modal-trigger" href="#modal<?php echo $admin->id_user;?>" data-dismissible="true"><?php echo $admin->user_displayname ?></a></td>
                 <td><?php echo $admin->user_username ?></td>
                 <td><div class="alert green lighten-4 green-text text-darken-2 center-align btn-rounded"><b><?php echo $admin->prev_name ?></b></div></td>
                 <td><?php echo ($admin->user_last_login=='0000-00-00 00:00:00') ? 'Never login yet' : $admin->user_last_login ?></td>
@@ -131,6 +192,42 @@
                     <a href="administrators/delete/<?php echo $admin->id_user.'/'.$admin->user_username ?>" class="waves-effect waves-dark btn red lighten-1 btn-small btn-rounded"><i class="small fa fa-remove"></i></a>
                 </td>
               </tr> 
+
+                <!-- Modal Structure -->
+                <div id="modal<?php echo $admin->id_user?>" class="modal">
+                  <div class="modal-content">
+                    <div class="col m12 l12">
+                      <h4>Edit Profile</h4>
+                      <form enctype="multipart/form-data" data-parsley-validate method="post" action="administrators/u_ing/<?php echo $admin->id_user.'/'.$admin->user_username; ?>">
+                        <div class="input-field">
+                          <input name="user_displayname" id="user_displayname" type="text" required value="<?php echo $admin->user_displayname; ?>">
+                          <label for="user_displayname">Display Name</label>
+                        </div>
+                        <div class="input-field">
+                          <input name="user_username" id="user_username" type="text" required value="<?php echo $admin->user_username; ?>">
+                          <label for="user_displayname">Username</label>
+                        </div>
+                        <div class="image-field">
+                          <img src="<?php echo ($admin->user_avatar!=='') ? base_url().'assets/profil_photo/'.$admin->user_avatar : base_url().'assets/profil_photo/nobody.jpg'?>" style="width: 30%;float: left;">
+                          <?php if ($admin->user_avatar!=='') { ?><a class="custom" href="administrators/del_photo/<?php echo $admin->user_avatar.'/'.$admin->id_user.'/'.$admin->user_username ?>"><i class="fa fa-remove"></i> Delete current</a> <?php } ?>
+                          <input type="hidden" name="current_avatar" value="<?php echo $admin->user_avatar ?>"></input>
+                        </div>
+                        <div class="file-field input-field">
+                          <input class="file-path validate" type="text"/>
+                          <div class="btn btn-small">
+                            <span>Avatar</span>
+                            <input name="user_avatar" type="file" />
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col s12">
+                            <button class="btn">Renew profile</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               <?php }
                ?>
             </tbody>
@@ -138,8 +235,5 @@
         </div>
       </div>
     </div>
-    
-
-
   </section>
   <!-- /Main Content -->

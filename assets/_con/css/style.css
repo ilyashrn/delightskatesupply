@@ -1,0 +1,20 @@
+.image-field {
+	float: left;
+	margin-right: 10px;
+	max-width: 40%;
+	margin-bottom: 10px;
+}
+
+.image-field img {
+	margin-right: 5px;
+}
+
+.custom {
+	border: 1px dashed #F44336;
+	padding: 3px;
+	color: #F44336;
+}
+
+.file-field {
+	float: left;
+}
