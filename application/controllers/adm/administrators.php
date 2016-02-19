@@ -21,7 +21,7 @@ class Administrators extends CI_Controller {
 	public function index()
 	{
 		$data = array(
-			'title' => 'Administrator Manager',
+			'title' => 'Post Categories Manager',
 			'username' => $this->username,
 			'displayname' => $this->displayname,
 			'avatar' => $this->avatar,
@@ -98,6 +98,14 @@ class Administrators extends CI_Controller {
 			'user_username' => $this->input->post('user_username'), 
 			'user_avatar' => $file_name
 		);
+		if ($username == $this->username) {
+			$array = array(
+				'user' => $this->input->post('user_username'),
+				'displayname' => $this->input->post('user_displayname'),
+				'avatar' => $file_name
+			);
+			$this->session->set_userdata($array);
+		}
 		$this->administrator->update($id,$update);
 		$this->session->set_flashdata('msg', $username."'s profile has been updated.");
 		redirect('adm/administrators','refresh');

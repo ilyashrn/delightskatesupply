@@ -42,13 +42,7 @@
             </ul>
           </li>
           <li class="<?php echo ($this->uri->segment(2) == 'categories') ? 'active' : '';?>">
-            <a class="yay-sub-toggle waves-effect waves-blue"><i class="mdi-content-filter-list"></i> Post Categories<span class="yay-collapse-icon mdi-navigation-expand-more"></span></a>
-            <ul>
-              <li class="<?php echo ($this->uri->segment(2) == 'categories' && $this->uri->segment(3) == 'new') ? 'active' : '';?>"><a class="waves-effect waves-blue" href="<?php echo base_url()?>adm/categories/new"><i class="mdi-av-playlist-add"></i> Add new</a>
-              </li>
-              <li class="<?php echo ($this->uri->segment(2) == 'categories') ? 'active' : '';?>"><a class="waves-effect waves-blue" href="<?php echo base_url()?>adm/categories"><i class="mdi-editor-format-list-bulleted"></i> Current list<span class="badge">1</span></a>
-              </li>
-            </ul>
+            <a href="<?php echo base_url()?>adm/categories" class="waves-effect waves-blue"><i class="mdi-content-filter-list"></i> Post Categories</a>
           </li>
 
           <li class="label">Media</li>

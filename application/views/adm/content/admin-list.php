@@ -41,7 +41,7 @@
         <div class="card-panel">
           <ul class="collection">
             <li class="collection-item avatar">
-              <img src="<?php echo ($avatar!=='') ? base_url().'assets/_con/images/user.jpg' : base_url().'assets/profil_photo/nobody.jpg'?>" alt="" class="circle">
+              <img src="<?php echo ($avatar!=='') ? base_url().'assets/profil_photo/'.$avatar : base_url().'assets/profil_photo/nobody.jpg'?>" alt="" class="circle">
               <span class="title"><b>Current Admin</b></span>
               <p><?php echo $displayname ?> <br>
               <?php echo $username; ?>

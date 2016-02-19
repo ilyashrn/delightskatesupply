@@ -20,7 +20,7 @@
         </li>
         <li class="user">
           <a class="dropdown-button" href="#!" data-activates="user-dropdown">
-            <img src="<?php echo ($avatar!=='') ? base_url().'assets/_con/images/user.jpg' : base_url().'assets/profil_photo/nobody.jpg' ?>" alt="John Doe" class="circle"><?php echo $displayname; ?><i class="mdi-navigation-expand-more right"></i>
+            <img src="<?php echo ($avatar!=='') ? base_url().'assets/profil_photo/'.$avatar : base_url().'assets/profil_photo/nobody.jpg' ?>" alt="John Doe" class="circle"><?php echo $displayname; ?><i class="mdi-navigation-expand-more right"></i>
           </a>
 
           <ul id="user-dropdown" class="dropdown-content">
