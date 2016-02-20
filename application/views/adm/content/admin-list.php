@@ -200,6 +200,10 @@
                       <h4>Edit Profile</h4>
                       <form enctype="multipart/form-data" data-parsley-validate method="post" action="administrators/u_ing/<?php echo $admin->id_user.'/'.$admin->user_username; ?>">
                         <div class="input-field">
+                          <input name="id_user" id="id_user" type="text" disabled value="<?php echo $admin->id_user; ?>">
+                          <label for="id_cat">User ID</label>
+                        </div>
+                        <div class="input-field">
                           <input name="user_displayname" id="user_displayname" type="text" required value="<?php echo $admin->user_displayname; ?>">
                           <label for="user_displayname">Display Name</label>
                         </div>

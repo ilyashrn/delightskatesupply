@@ -39,7 +39,7 @@
           </div>
         <?php } ?>
         <div class="card-panel">
-          <h4>Administrator</h4>
+          <h4>Categories</h4>
               <?php 
               if ($catlist) { ?>
           <table class="table table-stripped table-responsive" style="font-size: 13px;">
@@ -94,7 +94,7 @@
       </div>
 
       <div class="col s12 m6 l6">
-          <div class="card <?php echo ($this->session->flashdata('min')) ? '' : 'minimized';?>">
+          <div class="card">
             <div class="title">
               <h5>Add new Category</h5>
               <a class="minimize" href="#">

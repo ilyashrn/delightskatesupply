@@ -21,7 +21,7 @@ class Categories extends CI_Controller {
 	public function index()
 	{
 		$data = array(
-			'title' => 'Administrator Manager',
+			'title' => 'Categories Manager',
 			'username' => $this->username,
 			'displayname' => $this->displayname,
 			'avatar' => $this->avatar,

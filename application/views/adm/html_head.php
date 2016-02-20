@@ -32,5 +32,39 @@
   <!-- Main -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/_con/css/_con.min.css" />
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/_con/css/style.css" />
+
+  <!-- JAVASCRIPTS -->
+  <!-- DEMO [REMOVE IT ON PRODUCTION] -->
+  <script type="text/javascript" src="<?php echo base_url()?>assets/_con/js/_demo.js"></script>
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="<?php echo base_url()?>assets/jquery/jquery.min.js"></script>
+
+  <!-- jQuery RAF (improved animation performance) -->
+  <script type="text/javascript" src="<?php echo base_url()?>assets/jqueryRAF/jquery.requestAnimationFrame.min.js"></script>
+
+  <!-- nanoScroller -->
+  <script type="text/javascript" src="<?php echo base_url()?>assets/nanoScroller/jquery.nanoscroller.min.js"></script>
+
+  <!-- Materialize -->
+  <script type="text/javascript" src="<?php echo base_url()?>assets/materialize/js/materialize.min.js"></script>
+
+  <!-- Sortable -->
+  <script type="text/javascript" src="<?php echo base_url()?>assets/sortable/Sortable.min.js"></script>
+
+  <!-- Data Tables -->
+  <script type="text/javascript" src="<?php echo base_url()?>assets/dataTables/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url()?>assets/dataTables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url()?>assets/dataTables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
+
+  <!-- Main -->
+  <script type="text/javascript" src="<?php echo base_url()?>assets/_con/js/_con.min.js"></script>
+
+
+  <!-- Google Prettify -->
+  <script type="text/javascript" src="<?php echo base_url()?>assets/google-code-prettify/prettify.js"></script>
+
+  <!-- Parsley -->
+  <script type="text/javascript" src="<?php echo base_url()?>assets/parsley/parsley.min.js"></script>
 </head>
 <body>

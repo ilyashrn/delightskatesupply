@@ -21,18 +21,24 @@ class Posts extends CI_Controller {
 	public function index()
 	{
 		$data = array(
-			'title' => 'Administrator Manager',
+			'title' => 'Posts Manager',
 			'username' => $this->username,
 			'displayname' => $this->displayname,
 			'avatar' => $this->avatar,
 			'postlist' => $this->post->getAll()
 		);
+
+		$this->load->view('adm/html_head', $data);
+		$this->load->view('adm/navbar-top', $data);
+		$this->load->view('adm/sidebar', $data);
+		$this->load->view('adm/content/posts-list', $data);
+		$this->load->view('adm/footer', $data);			
 	}
 
-	public function new() 
-	{
+	// public function new() 
+	// {
 
-	}
+	// }
 
 }
 
