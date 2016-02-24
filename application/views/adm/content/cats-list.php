@@ -26,6 +26,7 @@
 
     </div>
     <!-- /Breadcrumb -->
+    
     <div class="row">
       <div class="col s12 m5 l5">
         <?php if ($this->session->flashdata('msg')) { ?>
@@ -47,6 +48,7 @@
               <tr>
                 <th>#</th>
                 <th>Category name</th>
+                <th>Products</th>
                 <th></th>
               </tr>
             </thead>
@@ -55,6 +57,7 @@
                 <tr>
                   <td><?php echo $cat->id_cat ?></td>
                   <td><a class="modal-trigger" href="#modal<?php echo $cat->id_cat;?>" data-dismissible="true"><?php echo $cat->cat_name ?></a></td>
+                  <td><?php echo $this->post->countPerCat($cat->id_cat);?> products</td>
                   <td>
                       <a href="categories/delete/<?php echo $cat->id_cat.'/'.$cat->cat_name ?>" class="waves-effect waves-dark btn red lighten-1 btn-small btn-rounded"><i class="small fa fa-remove"></i></a>
                   </td>

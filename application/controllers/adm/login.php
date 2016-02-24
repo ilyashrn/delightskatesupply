@@ -5,6 +5,7 @@ class Login extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		date_default_timezone_set('Asia/Jakarta');
 		if ($this->session->userdata('logged')) {
 			redirect('adm/dashboard','refresh');
 		}
@@ -14,7 +15,7 @@ class Login extends CI_Controller {
 		$data = array('title' => 'Administrator Login Page');
 		$this->load->view('adm/html_head', $data);
 		$this->load->view('adm/content/login', $data);
-		$this->load->view('adm/footer');
+		// $this->load->view('adm/footer');
 	}
 
 	function process() {
@@ -32,7 +33,10 @@ class Login extends CI_Controller {
 				);
 				$this->session->set_userdata($array);
 				
-				
+				$datestring = '%Y-%m-%d %h:%i:%s';
+				$login = array('user_last_login' => mdate($datestring,now('Asia/Jakarta')));
+				$this->administrator->update($admin['id_user'],$login);
+
 				if($this->input->post('remember_me')) {
 		            $cookie = $this->input->cookie('ci_session'); // we get the cookie
 		            $this->input->set_cookie('ci_session', $cookie, '35580000'); // and add one year to it's expiration

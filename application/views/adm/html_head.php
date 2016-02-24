@@ -14,7 +14,9 @@
   <!-- nanoScroller -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/nanoScroller/nanoscroller.css" />
 
-
+  <!-- Dropzone -->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/dropzone/dropzone.min.css" />
+  
   <!-- FontAwesome -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/font-awesome/css/font-awesome.min.css" />
 
@@ -52,15 +54,12 @@
   <!-- Sortable -->
   <script type="text/javascript" src="<?php echo base_url()?>assets/sortable/Sortable.min.js"></script>
 
-  <!-- Data Tables -->
+    <!-- Data Tables -->
   <script type="text/javascript" src="<?php echo base_url()?>assets/dataTables/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url()?>assets/dataTables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url()?>assets/dataTables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
-
-  <!-- Main -->
-  <script type="text/javascript" src="<?php echo base_url()?>assets/_con/js/_con.min.js"></script>
-
-
+  
+  <script type="text/javascript" src="<?php echo base_url();?>assets/dropzone/dropzone.min.js"></script>
   <!-- Google Prettify -->
   <script type="text/javascript" src="<?php echo base_url()?>assets/google-code-prettify/prettify.js"></script>
 

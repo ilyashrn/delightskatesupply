@@ -26,141 +26,141 @@
 
     </div>
     <!-- /Breadcrumb -->
-    <div class="row">
-      <div class="col s12 m5 l5">
-        <?php if ($this->session->flashdata('msg')) { ?>
-          <div class="alert green lighten-4 green-text text-darken-2">
-            <?php echo $this->session->flashdata('msg'); ?>
+  
+  <div class="row">
+    <div class="col s12 m5 l5">
+      <?php if ($this->session->flashdata('msg')) { ?>
+        <div class="alert green lighten-4 green-text text-darken-2">
+          <?php echo $this->session->flashdata('msg'); ?>
+        </div>
+      <?php } ?>
+      <?php if ($this->session->flashdata('warn')) { ?>
+        <div class="alert">
+          <?php echo $this->session->flashdata('warn'); ?>
+        </div>
+      <?php } ?>
+      <div class="card-panel">
+        <ul class="collection">
+          <li class="collection-item avatar">
+            <img src="<?php echo ($avatar!=='') ? base_url().'assets/profil_photo/'.$avatar : base_url().'assets/profil_photo/nobody.jpg'?>" alt="" class="circle">
+            <span class="title"><b>Current Admin</b></span>
+            <p><?php echo $displayname ?> <br>
+            <?php echo $username; ?>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col s12 m6 l6">
+        <div class="card <?php echo ($this->session->flashdata('min')) ? '' : 'minimized';?>">
+          <div class="title">
+            <h5>Add new Administrator</h5>
+            <a class="minimize" href="#">
+              <i class="mdi-navigation-expand-less"></i>
+            </a>
           </div>
-        <?php } ?>
-        <?php if ($this->session->flashdata('warn')) { ?>
-          <div class="alert">
-            <?php echo $this->session->flashdata('warn'); ?>
+          <div class="content">
+            <form enctype="multipart/form-data" data-parsley-validate method="post" action="administrators/i_ing">
+              <div class="input-field">
+                <input name="user_displayname" id="user_displayname" type="text" required value="<?php echo $this->session->flashdata('displayname'); ?>">
+                <label for="user_displayname">Display Name</label>
+              </div>
+              <div class="input-field">
+                <input name="user_username" id="user_username" type="text" required value="<?php echo $this->session->flashdata('username'); ?>">
+                <label for="user_displayname">Username</label>
+              </div>
+              <div class="input-field">
+                <input name="user_password" id="user_password" type="password" required>
+                <label for="user_password">Password</label>
+              </div>
+              <div class="input-field">
+                <input name="conf_pass" id="conf_pass" data-parsley-equalto="#user_password" type="password" required>
+                <label for="conf_pass">Confirm Password</label>
+              </div>
+              <select name="id_prev" required>
+                <option value="" disabled selected>Choose user previlege</option>
+                <option <?php echo ($this->session->flashdata('id_prev') == '1') ? 'selected' : ''; ?> value="1">Superuser</option>
+                <option <?php echo ($this->session->flashdata('id_prev') == '2') ? 'selected' : ''; ?> value="2">User</option>
+              </select>
+              <div class="file-field input-field">
+                <input class="file-path validate" type="text"/>
+                <div class="btn btn-small">
+                  <span>Avatar</span>
+                  <input name="user_avatar" type="file" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <button class="btn">Regrister new user</button>
+                </div>
+              </div>
+            </form>
           </div>
-        <?php } ?>
-        <div class="card-panel">
-          <ul class="collection">
-            <li class="collection-item avatar">
-              <img src="<?php echo ($avatar!=='') ? base_url().'assets/profil_photo/'.$avatar : base_url().'assets/profil_photo/nobody.jpg'?>" alt="" class="circle">
-              <span class="title"><b>Current Admin</b></span>
-              <p><?php echo $displayname ?> <br>
-              <?php echo $username; ?>
-              </p>
-            </li>
-          </ul>
+        </div>
+
+        <div class="card <?php echo ($this->session->flashdata('min')) ? '' : 'minimized';?>">
+          <div class="title">
+            <h5>Change Passwords</h5>
+            <a class="minimize" href="#">
+              <i class="mdi-navigation-expand-less"></i>
+            </a>
+          </div>
+          <div class="content">
+            <form enctype="multipart/form-data" data-parsley-validate method="post" action="administrators/u_pass/">
+              <select name="id_user" required>
+                  <option value="" disabled selected>Choose a user</option>
+                <?php foreach ($adminlist as $admin) { ?>
+                  <option value="<?php echo $admin->id_user;?>"><?php echo $admin->user_username.' - '.$admin->user_displayname ?></option>  
+                <?php } ?>
+              </select>
+              <div class="input-field">
+                <input name="user_password" id="user_password1" type="password" required>
+                <label for="user_password">New Password</label>
+              </div>
+              <div class="input-field">
+                <input name="conf_pass" id="conf_pass" data-parsley-equalto="#user_password1" type="password" required>
+                <label for="conf_pass">Confirm New Password</label>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <button class="btn">Regrister new password for user</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="card <?php echo ($this->session->flashdata('min')) ? '' : 'minimized';?>">
+          <div class="title">
+            <h5>Change Previleges</h5>
+            <a class="minimize" href="#">
+              <i class="mdi-navigation-expand-less"></i>
+            </a>
+          </div>
+          <div class="content">
+            <form enctype="multipart/form-data" data-parsley-validate method="post" action="administrators/u_prev">
+              <select name="id_user" required>
+                  <option value="" disabled selected>Choose a user</option>
+                <?php foreach ($adminlist as $admin) { ?>
+                  <option value="<?php echo $admin->id_user;?>"><?php echo $admin->user_username.' - '.$admin->user_displayname ?></option>  
+                <?php } ?>
+              </select>
+              <select name="id_prev2" required>
+                  <option value="" disabled selected>Choose a previlege</option>
+                  <option value="1">Superuser</option>
+                  <option value="2">User</option>
+              </select>
+              <div class="row">
+                <div class="col s12">
+                  <button class="btn">Update previlege for this user</button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-
-      <div class="col s12 m6 l6">
-          <div class="card <?php echo ($this->session->flashdata('min')) ? '' : 'minimized';?>">
-            <div class="title">
-              <h5>Add new Administrator</h5>
-              <a class="minimize" href="#">
-                <i class="mdi-navigation-expand-less"></i>
-              </a>
-            </div>
-            <div class="content">
-              <form enctype="multipart/form-data" data-parsley-validate method="post" action="administrators/i_ing">
-                <div class="input-field">
-                  <input name="user_displayname" id="user_displayname" type="text" required value="<?php echo $this->session->flashdata('displayname'); ?>">
-                  <label for="user_displayname">Display Name</label>
-                </div>
-                <div class="input-field">
-                  <input name="user_username" id="user_username" type="text" required value="<?php echo $this->session->flashdata('username'); ?>">
-                  <label for="user_displayname">Username</label>
-                </div>
-                <div class="input-field">
-                  <input name="user_password" id="user_password" type="password" required>
-                  <label for="user_password">Password</label>
-                </div>
-                <div class="input-field">
-                  <input name="conf_pass" id="conf_pass" data-parsley-equalto="#user_password" type="password" required>
-                  <label for="conf_pass">Confirm Password</label>
-                </div>
-                <select name="id_prev" required>
-                  <option value="" disabled selected>Choose user previlege</option>
-                  <option <?php echo ($this->session->flashdata('id_prev') == '1') ? 'selected' : ''; ?> value="1">Superuser</option>
-                  <option <?php echo ($this->session->flashdata('id_prev') == '2') ? 'selected' : ''; ?> value="2">User</option>
-                </select>
-                <div class="file-field input-field">
-                  <input class="file-path validate" type="text"/>
-                  <div class="btn btn-small">
-                    <span>Avatar</span>
-                    <input name="user_avatar" type="file" />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12">
-                    <button class="btn">Regrister new user</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <div class="card <?php echo ($this->session->flashdata('min')) ? '' : 'minimized';?>">
-            <div class="title">
-              <h5>Change Passwords</h5>
-              <a class="minimize" href="#">
-                <i class="mdi-navigation-expand-less"></i>
-              </a>
-            </div>
-            <div class="content">
-              <form enctype="multipart/form-data" data-parsley-validate method="post" action="administrators/u_pass/">
-                <select name="id_user" required>
-                    <option value="" disabled selected>Choose a user</option>
-                  <?php foreach ($adminlist as $admin) { ?>
-                    <option value="<?php echo $admin->id_user;?>"><?php echo $admin->user_username.' - '.$admin->user_displayname ?></option>  
-                  <?php } ?>
-                </select>
-                <div class="input-field">
-                  <input name="user_password" id="user_password1" type="password" required>
-                  <label for="user_password">New Password</label>
-                </div>
-                <div class="input-field">
-                  <input name="conf_pass" id="conf_pass" data-parsley-equalto="#user_password1" type="password" required>
-                  <label for="conf_pass">Confirm New Password</label>
-                </div>
-                <div class="row">
-                  <div class="col s12">
-                    <button class="btn">Regrister new password for user</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <div class="card <?php echo ($this->session->flashdata('min')) ? '' : 'minimized';?>">
-            <div class="title">
-              <h5>Change Previleges</h5>
-              <a class="minimize" href="#">
-                <i class="mdi-navigation-expand-less"></i>
-              </a>
-            </div>
-            <div class="content">
-              <form enctype="multipart/form-data" data-parsley-validate method="post" action="administrators/u_prev">
-                <select name="id_user" required>
-                    <option value="" disabled selected>Choose a user</option>
-                  <?php foreach ($adminlist as $admin) { ?>
-                    <option value="<?php echo $admin->id_user;?>"><?php echo $admin->user_username.' - '.$admin->user_displayname ?></option>  
-                  <?php } ?>
-                </select>
-                <select name="id_prev2" required>
-                    <option value="" disabled selected>Choose a previlege</option>
-                    <option value="1">Superuser</option>
-                    <option value="2">User</option>
-                </select>
-                <div class="row">
-                  <div class="col s12">
-                    <button class="btn">Update previlege for this user</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-
-        </div>
-      </div>
+    </div>
     
     <div class="row">
       <div class="col m12 l12">
