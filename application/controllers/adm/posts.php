@@ -91,7 +91,6 @@ class Posts extends CI_Controller {
 					$this->post->insert_img($img);			
                 } else {
                 	$this->session->set_flashdata('warn', $this->upload->display_errors());
-                	echo $this->upload->display_errors();
                 }
         	}
 		}

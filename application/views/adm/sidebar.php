@@ -45,8 +45,8 @@
           </li>
 
           <li class="label">Media</li>
-          <li class="<?php echo ($this->uri->segment(2) == 'gallery') ? 'active' : '';?>">
-            <a href="<?php echo base_url()?>adm/gallery" class="waves-effect waves-blue"><i class="fa fa-image (alias)"></i> Gallery<span class="badge">1</span></a>
+          <li class="<?php echo ($this->uri->segment(2) == 'galleries') ? 'active' : '';?>">
+            <a href="<?php echo base_url()?>adm/galleries" class="waves-effect waves-blue"><i class="fa fa-image (alias)"></i> Gallery<span class="badge">1</span></a>
           </li>
           <li class="<?php echo ($this->uri->segment(2) == 'videos') ? 'active' : '';?>">
             <a href="<?php echo base_url()?>adm/videos" class="waves-effect waves-blue"><i class="fa fa-youtube-play"></i> Youtube link<span class="badge">1</span></a>
