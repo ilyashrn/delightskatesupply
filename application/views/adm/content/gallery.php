@@ -63,14 +63,14 @@
           <div class="content">
             <form enctype="multipart/form-data" data-parsley-validate method="post" action="galleries/i_ing">
               <div class="input-field">
-                <textarea class="materialize-textarea" name="gallery_desc"></textarea>
+                <textarea class="materialize-textarea" name="gallery_desc" required></textarea>
                 <label for="gallery_desc">Caption</label>
               </div>
               <div class="file-field input-field">
                 <input class="file-path validate" type="text"/>
                 <div class="btn btn-small">
                   <span>Photo</span>
-                  <input name="gallery" type="file" />
+                  <input required name="gallery" type="file" />
                 </div>
                 <!-- <img id="blah" src="#" alt="" /> -->
               </div>
@@ -111,10 +111,10 @@
           <div class="modal-content">
             <div class="col m12 l12">
               <h4>Edit Caption</h4>
-              <form enctype="multipart/form-data" method="post" action="galleries/u_ing/<?php echo $gal->id_gal;?>">
+              <form data-parsley-validate enctype="multipart/form-data" method="post" action="galleries/u_ing/<?php echo $gal->id_gal;?>">
                 <div class="col l6 m5 s12">
                   <div class="input-field">
-                    <textarea class="materialize-textarea" name="gallery_desc"><?php echo $gal->gallery_desc;?></textarea>
+                    <textarea class="materialize-textarea" name="gallery_desc" required><?php echo $gal->gallery_desc;?></textarea>
                     <label for="gallery_desc">Caption</label>
                   </div>
                 </div>

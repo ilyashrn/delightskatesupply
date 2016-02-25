@@ -95,7 +95,7 @@
                   <div class="modal-content">
                     <div class="col m12 l12">
                       <h4>Edit Post</h4>
-                      <form enctype="multipart/form-data" method="post" action="posts/u_ing/<?php echo $post->id_post.'/'.$post->post_title;?>">
+                      <form enctype="multipart/form-data" data-parsley-validate method="post" action="posts/u_ing/<?php echo $post->id_post.'/'.$post->post_title;?>">
                         <div class="col l6 m5 s12">
                           <div class="input-field">
                             <input name="post_title" id="post_title" type="text" required value="<?php echo $post->post_title; ?>">

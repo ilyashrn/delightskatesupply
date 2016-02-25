@@ -78,7 +78,7 @@ class Galleries extends CI_Controller {
 	public function delete($file_name,$id)
 	{
 		$this->gallery->delete($id);
-		unlink('./assets/profil_photo/'.$filename);
+		unlink('./assets/gallery/'.$file_name);
 		$this->session->set_flashdata('msg', 'One photo of gallery has been succesfully removed.');
 		redirect('adm/galleries','refresh');
 	}
