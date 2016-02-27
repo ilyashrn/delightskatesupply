@@ -14,9 +14,6 @@
   <!-- nanoScroller -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/nanoScroller/nanoscroller.css" />
 
-  <!-- Dropzone -->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/dropzone/dropzone.min.css" />
-  
   <!-- FontAwesome -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/font-awesome/css/font-awesome.min.css" />
 
@@ -25,9 +22,6 @@
 
   <!-- IonIcons -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/ionicons/css/ionicons.min.css" />
-
-  <!-- WeatherIcons -->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/weatherIcons/css/weather-icons.min.css" />
 
   <!-- Google Prettify -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/google-code-prettify/prettify.css" />
@@ -59,7 +53,6 @@
   <script type="text/javascript" src="<?php echo base_url()?>assets/dataTables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url()?>assets/dataTables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
   
-  <script type="text/javascript" src="<?php echo base_url();?>assets/dropzone/dropzone.min.js"></script>
   <!-- Google Prettify -->
   <script type="text/javascript" src="<?php echo base_url()?>assets/google-code-prettify/prettify.js"></script>
 

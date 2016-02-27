@@ -15,9 +15,6 @@
   <!-- Main -->
   <script type="text/javascript" src="<?php echo base_url()?>assets/_con/js/_con.min.js"></script>
 
-  <!-- dropzone -->
-  <script type="text/javascript" src="<?php echo base_url();?>assets/dropzone/dropzone.min.js"></script>
-
   <script type="text/javascript" src="<?php echo base_url();?>assets/jquery-input-mask/jquery.inputmask.bundle.min.js"></script>
 
   <!-- Materialize -->
