@@ -25,7 +25,7 @@ class Galleries extends CI_Controller {
 			'username' => $this->username,
 			'displayname' => $this->displayname,
 			'avatar' => $this->avatar,
-			'galleries' => $this->gallery->getAll()
+			'galleries' => $this->gallery->getAllperType('1')
 		);
 
 		$this->load->view('adm/html_head', $data);
@@ -53,7 +53,8 @@ class Galleries extends CI_Controller {
 				if ($upload) {
 					$input = array(
 						'gallery_file' => $file_name,
-						'gallery_desc' => $this->input->post('gallery_desc') 
+						'gallery_desc' => $this->input->post('gallery_desc'),
+						'gallery_type' => '1'
 					);
 					$this->gallery->insert($input);
 					$this->session->set_flashdata('msg', 'Insert new photo on gallery list succesfull :)');

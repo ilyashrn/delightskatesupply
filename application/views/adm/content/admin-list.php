@@ -46,6 +46,12 @@
           </li>
         </ul>
       </div>
+      <div class="alert alert-border-bottom red lighten-1 white-text text-darken-2">
+          <h4>FYI!</h4>
+          <blockquote><b>Superuser</b>: Administrators with full previlege of the admin panel</blockquote>
+          <blockquote><b>User</b>: Administrators that can't have access to user manager.</blockquote>
+          <blockquote>Upload <b>square avatar photo</b> for your users. </blockquote>
+      </div>
     </div>
 
     <div class="col s12 m6 l6">

@@ -39,6 +39,10 @@
             <?php echo $this->session->flashdata('warn'); ?>
           </div>
         <?php } ?>
+        <div class="alert alert-border-bottom blue lighten-2 white-text text-darken-2">
+          <h4>FYI!</h4>
+          <blockquote>Before you delete one of these categories, <b>please keep in mind</b> that the category's products will be deleted as well.</blockquote>
+      </div>
         <div class="card-panel">
           <h4>Categories</h4>
               <?php 

@@ -29,7 +29,8 @@ class Login extends CI_Controller {
 					'logged' => true,
 					'user' => $username,
 					'displayname' => $admin['user_displayname'],
-					'avatar' => $admin['user_avatar']
+					'avatar' => $admin['user_avatar'],
+					'previlege' => $admin['id_prev']
 				);
 				$this->session->set_userdata($array);
 				

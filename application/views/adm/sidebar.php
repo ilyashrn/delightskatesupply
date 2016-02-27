@@ -1,4 +1,4 @@
-  <aside class="yaybar yay-shrink yay-hide-to-small yay-gestures">
+  <aside class="yaybar yay-light yay-shrink yay-hide-to-small yay-gestures">
 
     <div class="top">
       <div>
@@ -25,18 +25,21 @@
           <li class="<?php echo ($this->uri->segment(2) == 'dashboard' || $this->uri->segment(2) == '') ? 'active' : '';?>">
             <a href="<?php echo base_url()?>adm/dashboard" class="waves-effect waves-blue"><i class="fa fa-dashboard"></i> Dashboards</a>
           </li>
-          
-          <li class="label">User</li>
-          <li class="<?php echo ($this->uri->segment(2) == 'administrators') ? 'active' : '';?>">
-            <a href="<?php echo base_url()?>adm/administrators" class="waves-effect waves-blue"><i class="fa fa-user"></i> Administrators<span class="badge">1</span></a>
-          </li>
+          <?php 
+          if ($this->session->userdata('previlege') == '1') { ?>
+            <li class="label">User</li>
+            <li class="<?php echo ($this->uri->segment(2) == 'administrators') ? 'active' : '';?>">
+              <a href="<?php echo base_url()?>adm/administrators" class="waves-effect waves-blue"><i class="fa fa-user"></i> Administrators<span class="badge"><?php echo $this->administrator->count() ?></span></a>
+            </li>
+          <?php }
+           ?>
           <li class="label">Posts</li>
           <li class="<?php echo ($this->uri->segment(2) == 'posts') ? 'open' : '';?>">
             <a class="yay-sub-toggle waves-effect waves-blue"><i class="mdi-image-grid-on"></i> Posts<span class="yay-collapse-icon mdi-navigation-expand-more"></span></a>
             <ul>
               <li class="<?php echo ($this->uri->segment(2) == 'posts' && $this->uri->segment(3) == 'new_post') ? 'active' : '';?>"><a class="waves-effect waves-blue" href="<?php echo base_url()?>adm/posts/new_post"><i class="mdi-av-playlist-add"></i> Add new</a>
               </li>
-              <li class="<?php echo ($this->uri->segment(2) == 'posts') ? 'active' : '' && $this->uri->segment(3) == '';?>"><a class="waves-effect waves-blue" href="<?php echo base_url()?>adm/posts"><i class="mdi-editor-format-list-bulleted"></i> Current list<span class="badge">1</span></a>
+              <li class="<?php echo ($this->uri->segment(2) == 'posts') ? 'active' : '' && $this->uri->segment(3) == '';?>"><a class="waves-effect waves-blue" href="<?php echo base_url()?>adm/posts"><i class="mdi-editor-format-list-bulleted"></i> Current list<span class="badge"><?php echo $this->post->count() ?></span></a>
               </li>
             </ul>
           </li>
@@ -46,10 +49,13 @@
 
           <li class="label">Media</li>
           <li class="<?php echo ($this->uri->segment(2) == 'galleries') ? 'active' : '';?>">
-            <a href="<?php echo base_url()?>adm/galleries" class="waves-effect waves-blue"><i class="fa fa-image (alias)"></i> Gallery<span class="badge">1</span></a>
+            <a href="<?php echo base_url()?>adm/galleries" class="waves-effect waves-blue"><i class="fa fa-image (alias)"></i> Gallery<span class="badge"><?php echo $this->gallery->count('1') ?></span></a>
           </li>
           <li class="<?php echo ($this->uri->segment(2) == 'videos') ? 'active' : '';?>">
-            <a href="<?php echo base_url()?>adm/videos" class="waves-effect waves-blue"><i class="fa fa-youtube-play"></i> Youtube link<span class="badge">1</span></a>
+            <a href="<?php echo base_url()?>adm/videos" class="waves-effect waves-blue"><i class="fa fa-youtube-play"></i> Youtube link<span class="badge"><?php echo $this->gallery->count('2') ?></span></a>
+          </li>
+          <li class="<?php echo ($this->uri->segment(2) == 'homes') ? 'active' : '';?>">
+            <a href="<?php echo base_url()?>adm/homes" class="waves-effect waves-blue"><i class="fa fa-image (alias)"></i> Home</a>
           </li>
 
           <li class="label">Information</li>

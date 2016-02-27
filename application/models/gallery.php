@@ -21,6 +21,28 @@ class Gallery extends CI_Model {
 		}
 	}
 
+	function count($id) {
+		$this->db->select('*');
+		$this->db->from($this->table.' as p');
+		$this->db->where('gallery_type', $id);
+
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+
+	function getAllperType($id) {
+		$this->db->select('*');
+		$this->db->from($this->table.' as p');
+		$this->db->where('gallery_type', $id);
+
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		} else {
+			return false;
+		}
+	}
+
 	function get($id) {
 		$this->db->select('*');
 		$this->db->from($this->table.' as p');

@@ -24,14 +24,23 @@ class Post extends CI_Model {
 		}
 	}
 
+	function count() {
+		$this->db->select('*');
+		$this->db->from($this->table.' as p');
+
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+
 	function get($id) {
 		$this->db->select('*');
 		$this->db->from($this->table.' as p');
+		$this->db->join($this->table2.' as c', 'p.id_cat = c.id_cat', 'left');
 		$this->db->where('id_post', $id);
 
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
-			return $query->result();
+			return $query->row_array();
 		} else {
 			return false;
 		}

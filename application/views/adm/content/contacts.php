@@ -71,9 +71,15 @@
                       echo '<i class="fa fa-twitter-square medium"></i>';
                     } elseif ($cont->contact_type=='5') {
                       echo 'Snapchat';
-                    } else {
+                    } elseif ($cont->contact_type=='6') {
                       echo 'BBM';
-                    }?>
+                    } elseif($cont->contact_type=='7') {
+                      echo '<i class="mdi-action-home medium"></i>';
+                    } elseif($cont->contact_type=='8') {
+                      echo '<i class="mdi-communication-email medium"></i>';
+                    } elseif($cont->contact_type=='9') {
+                      echo '<i class="mdi-action-settings-phone medium"></i>';
+                    } ?>
                     
                   </td>
                   <td>
@@ -131,7 +137,9 @@
                 <select name="contact_type" required>
                   <option disabled selected>Choose a contact category</option>
                   <option value="1">Instagram</option>
-                  <option value="2">Whatsapp/Phone number</option>
+                  <option value="8">E-mail</option>
+                  <option value="9">Phone number</option>
+                  <option value="2">Whatsapp</option>
                   <option value="3">Facebook</option>
                   <option value="4">Twitter</option>
                   <option value="5">Snapchat</option>

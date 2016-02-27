@@ -22,6 +22,14 @@ class Administrator extends CI_Model {
 		}
 	}
 
+	function count() {
+		$this->db->select('*');
+		$this->db->from($this->table.' as u');		
+
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+
 	function get($id) {
 		$this->db->select('*');
 		$this->db->from($this->table.' as u');

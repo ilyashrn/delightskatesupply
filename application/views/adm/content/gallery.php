@@ -53,7 +53,16 @@
             <?php echo $this->session->flashdata('warn'); ?>
           </div>
         <?php } ?>
-        <div class="card <?php echo ($this->session->flashdata('min')) ? '' : 'minimized';?>">
+        <div class="alert alert-border-bottom orange lighten-4 cyan-text text-darken-2">
+          <h4>FYI!</h4>
+          It is <b>strongly recommended</b> for you to: 
+          <blockquote>Upload <b>similar-sized</b> photos on your gallery, to create a tidy and clean gallery on frontend website.</blockquote>
+          <blockquote>Upload <b>maximum-1 MB-sized</b> photos on your gallery, to save up storage usage.</blockquote>
+          <blockquote>Upload <b>white-background-ed</b> or <b>.PNG-formatted</b> photos.</blockquote>
+        </div>
+      </div>
+      <div class="col s12 m5 l5">
+        <div class="card">
           <div class="title">
             <h5>Add new photo</h5>
             <a class="minimize" href="#">
@@ -88,8 +97,13 @@
     <div class="row">
       <?php 
       if ($galleries) {
-        $counter = 0;
-        foreach ($galleries as $gal) { ?>
+        $counter = 1;
+        $counter2 = 1;
+        foreach ($galleries as $gal) {
+        if ($counter == 1 || $counter%3 == 1) {
+           echo '<div class="row">';
+        } 
+         ?>
         <div class="col s12 m3 l4">
           <div class="card image-card">
             <div class="image">
@@ -127,7 +141,14 @@
             </div>
           </div>
         </div>
-      <?php } } else{
+      <?php 
+      // $counter2++;
+      if ($counter%3 == 0) {
+        echo '</div>';
+        $counter = 0;
+      }
+      $counter++; 
+      } } else{
         echo '<div class="alert alert-border-left">Seems you dont have any photo in the gallery at current time. <b>Add new a new one!</b> :)</div>';
         } ?>
     </div>

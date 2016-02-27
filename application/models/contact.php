@@ -23,14 +23,15 @@ class Contact extends CI_Model {
 		}
 	}
 
-	function get($id) {
+	function get($comparison,$id) {
 		$this->db->select('*');
 		$this->db->from($this->table.' as c');
 		$this->db->join($this->table2.' as t', 'c.contact_type = t.id_type', 'left');
+		$this->db->where($comparison, $id);
 
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
-			return $query->result();
+			return $query->row_array();
 		} else {
 			return false;
 		}
