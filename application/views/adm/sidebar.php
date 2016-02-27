@@ -62,8 +62,8 @@
           <li class="<?php echo ($this->uri->segment(2) == 'contacts') ? 'active' : '';?>">
             <a href="<?php echo base_url()?>adm/contacts" class="waves-effect waves-blue"><i class="mdi-communication-quick-contacts-mail"></i>Contacts</a>
           </li>
-          <li class="<?php echo ($this->uri->segment(2) == 'about') ? 'active' : '';?>">
-            <a href="<?php echo base_url()?>adm/about" class="waves-effect waves-blue"><i class="fa fa-meh-o"></i>About</a>
+          <li class="<?php echo ($this->uri->segment(2) == 'abouts') ? 'active' : '';?>">
+            <a href="<?php echo base_url()?>adm/abouts" class="waves-effect waves-blue"><i class="fa fa-meh-o"></i>About</a>
           </li>
         </ul>
 

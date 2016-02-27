@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class About extends CI_Controller {
+class Aboutt extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
@@ -11,6 +11,7 @@ class About extends CI_Controller {
 	{
 		$data = array(
 			'title' => 'About Delight Skate Supply',
+			'about' => $this->about->get(),
 			'contacts' => $this->contact->getAll(),
 			'twitter' => $this->contact->get('c.contact_type','4'),
 			'facebook' => $this->contact->get('c.contact_type','3'),

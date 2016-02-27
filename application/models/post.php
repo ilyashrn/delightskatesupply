@@ -24,6 +24,35 @@ class Post extends CI_Model {
 		}
 	}
 
+	function getperCat($id) {
+		$this->db->select('*');
+		$this->db->from($this->table.' as p');
+		$this->db->join($this->table2.' as c', 'p.id_cat = c.id_cat', 'left');
+		$this->db->where('p.id_cat', $id);
+
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		} else {
+			return false;
+		}
+	}
+
+	function getPopular() {
+		$this->db->select('*');
+		$this->db->from($this->table.' as p');
+		$this->db->join($this->table2.' as c', 'p.id_cat = c.id_cat', 'left');
+		$this->db->order_by('p.post_hit', 'desc');
+
+		$this->db->limit(6);
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		} else {
+			return false;
+		}
+	}
+
 	function count() {
 		$this->db->select('*');
 		$this->db->from($this->table.' as p');

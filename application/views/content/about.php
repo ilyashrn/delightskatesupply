@@ -1,4 +1,30 @@
-<section id="contact"> 
+        <section id="about"> 
+            <div class="about-background"> 
+                <div class="container"> 
+                    <h2>About</h2> 
+                    <div class="row"> 
+                        <div class="aboutWrapper col-xs-12 col-sm-12"> 
+                            <img src="<?php echo base_url()?>assets/img/square2.png" alt=""> 
+                            <div class="about-text"> 
+                                <h3>We are Delight Skate Supplies</h3> 
+                                <p><?php echo $about['content'] ?></p>
+                                <div class="social"> 
+                                    <ul>
+                                        <?php
+                                        echo ($facebook) ? '<li> <a href="http://www.facebook.com/'.$facebook['contact_content'].'" target="blank"><i class="fa fa-facebook"></i></a> </li>' : '';
+                                        echo ($twitter) ? '<li> <a href="http://www.twitter.com/'.$twitter['contact_content'].'" target="blank"><i class="fa fa-twitter"></i></a> </li>' : '';
+                                        echo ($instagram) ? '<li> <a href="http://www.instagram.com/'.$instagram['contact_content'].'" target="blank"><i class="fa fa-instagram"></i></a> </li>' : '';
+                                         ?> 
+                                    </ul> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact"> 
             <div class="contact-background"> 
                 <div class="container"> 
                     <h2>Get In Touch</h2> 

@@ -2,14 +2,6 @@
         
         <div class="blog-single-background"> 
             <div class="container"> 
-                <!-- <div> 
-                    <h2>Portfolio</h2> 
-                    <ul id="button-group"> 
-                        <li class="active" data-filter="*">All</li>
-                        <li data-filter=".category-1">Illustrator</li>
-                        <li data-filter=".category-2">Photography</li>
-                    </ul> 
-                </div> -->
                 <div class="clearfix">
                     
                 </div>

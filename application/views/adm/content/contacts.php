@@ -40,7 +40,7 @@
         <?php } ?>
         <div class="alert alert-border-bottom cyan lighten-4 cyan-text text-darken-2">
           <h4>FYI!</h4>
-          These <b>contacts information</b> will appear on your site footer :)
+          <blockquote>These <b>contacts information</b> will appear on your <b>site footer</b> and <b>about page</b></blockquote>
         </div>
         <div class="card-panel">
           <h4>Contacts</h4>
@@ -146,7 +146,9 @@
                   <option value="6">BBM</option>
                 </select>
                 <div class="alert blue lighten-2 white-text">
-                  <h5><b>FYI!</b></h5>Fill Contact content only with your <b>social media username, phone number, or PIN</b>. 
+                  <h5><b>FYI!</b></h5>
+                  <blockquote>Fill the Social media field content with <b>your username</b>.</blockquote>
+                  <blockquote>Fill the BBM field content with <b>BBM pin</b>.</blockquote>
                 </div>
                 <div class="input-field">
                   <input name="contact_content" id="contact_content" type="text" required value="<?php echo $this->session->flashdata('contact_content'); ?>">
@@ -155,6 +157,28 @@
                 <div class="row">
                   <div class="col s12">
                     <button class="btn">Add new Contact</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="card">
+            <div class="title">
+              <h5>Address Information</h5>
+              <a class="minimize" href="#">
+                <i class="mdi-navigation-expand-less"></i>
+              </a>
+            </div>
+            <div class="content">
+              <form data-parsley-validate method="post" action="contacts/i_ing">
+                <div class="input-field">
+                  <textarea class="materialize-textarea" name="contact_content" id="contact_content"></textarea>
+                  <label for="cat_name">Adress </label>
+                  <input type="hidden" name="contact_type" value="7"></input>
+                </div>
+                <div class="row">
+                  <div class="col s12">
+                    <button class="btn">Update contact</button>
                   </div>
                 </div>
               </form>

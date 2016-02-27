@@ -21,7 +21,7 @@
                 </div>
                 <ul class="nav"> 
                     <li <?php echo ($this->uri->segment(1) == 'index' || $this->uri->segment(1) == '') ? 'class="active"' : ''; ?>> <a href="<?php echo base_url()?>">Home</a> </li>
-                    <li <?php echo ($this->uri->segment(1) == 'about') ? 'class="active"' : ''; ?>> <a href="<?php echo base_url()?>about">About</a> </li>
+                    <li <?php echo ($this->uri->segment(1) == 'aboutt') ? 'class="active"' : ''; ?>> <a href="<?php echo base_url()?>aboutt">About</a> </li>
                     <li <?php echo ($this->uri->segment(1) == 'product') ? 'class="active"' : ''; ?>> <a href="<?php echo base_url()?>product">Products</a> </li>
                     <li <?php echo ($this->uri->segment(1) == 'media') ? 'class="active"' : ''; ?>> <a href="<?php echo base_url()?>media">Media</a> </li>
                 </ul> 
